@@ -1,4 +1,4 @@
-# Eraser - Ammunation against [tyyp://](https://github.com/rakyll/tyyp)
+# Eraser - Ammunition against [tyyp://](https://github.com/rakyll/tyyp)
 If you want to block the "internets" it means you haven't met the Eraser yet.
 
 - Eraser is under development and it only offers dynamic DNS settings and automatic proxying. Don't expect too much!
