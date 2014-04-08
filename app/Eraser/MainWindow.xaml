@@ -7,9 +7,9 @@
         mc:Ignorable="d ignore"
         Height="300"
         Width="300"
-        Title="MVVM Light Application"
+        Title="Eraser"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,13 +20,32 @@
 
     <Grid x:Name="LayoutRoot">
 
-        <TextBlock FontSize="36"
+        <ComboBox FontSize="12"
                    FontWeight="Bold"
                    Foreground="Purple"
-                   Text="{Binding WelcomeTitle}"
+                   ItemsSource="{Binding AdapterList}"
+                   DisplayMemberPath="Name"
                    VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
+                   SelectedIndex="0"
+                   SelectedItem="{Binding SelectedAdapter}"
+                   HorizontalAlignment="Center" Margin="10,10,10,224" Width="272" />
+
+        <TextBox FontSize="12"
+                 FontWeight="Bold"
+                 Foreground="Purple"
+                 Text="{Binding SelectedAdapter.DNS[0]}"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Margin="10,44,10,195" Width="272" />
+
+        <TextBox FontSize="12"
+                 FontWeight="Bold"
+                 Foreground="Purple"
+                 Text="{Binding SelectedAdapter.DNS[1]}"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Margin="10,79,10,160" Width="272" />
+
 
     </Grid>
 </Window>

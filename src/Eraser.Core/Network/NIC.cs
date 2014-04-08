@@ -22,15 +22,20 @@ namespace Eraser.Core.Network
             foreach (ManagementObject mo in moc)
             {
                 string settingId = mo["SettingID"].ToString();
-                string name = NetworkInterface.GetAllNetworkInterfaces().Where(x => x.Id == settingId).FirstOrDefault().Name;
-                string[] dns = (string[])mo[DNSSERVERSEARCHORDER];
+                var ni = NetworkInterface.GetAllNetworkInterfaces().Where(x => x.Id == settingId).FirstOrDefault();
 
-                yield return new Adapter
+                if (ni != null)
                 {
-                    Id = settingId,
-                    Name = name,
-                    DNS = dns
-                };
+                    string name = NetworkInterface.GetAllNetworkInterfaces().Where(x => x.Id == settingId).FirstOrDefault().Name;
+                    string[] dns = (string[])mo[DNSSERVERSEARCHORDER];
+
+                    yield return new Adapter
+                    {
+                        Id = settingId,
+                        Name = name,
+                        DNS = dns
+                    };
+                }
             }
 
             yield break;
@@ -40,7 +45,7 @@ namespace Eraser.Core.Network
         {
             bool isSet = false;
 
-            string query = string.Format("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE SettingID = {0}", settingId);
+            string query = string.Format("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE SettingID = '{0}'", settingId);
 
             ManagementObjectSearcher mos = new ManagementObjectSearcher(query);
             ManagementObjectCollection moc = mos.Get();
@@ -69,6 +74,7 @@ namespace Eraser.Core.Network
                     }
                 }
 
+                // TODO: IS defined NEEDED?
                 if (defined)
                     newMo[DNSSERVERSEARCHORDER] = dnsArray;
                 else

@@ -1,65 +1,58 @@
 ﻿using GalaSoft.MvvmLight;
 using Eraser.Model;
+using Eraser.Domain.Service;
+using Eraser.Model.Network;
+using System.Collections.Generic;
 
 namespace Eraser.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        public const string adapterListPropertyName = "AdapterList";
+        public const string selectedAdapterPropertyName = "SelectedAdapter";
 
-        private string _welcomeTitle = string.Empty;
+        private IEnumerable<Adapter> _adapterList;
+        private Adapter _selectedAdapter;
 
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
+        public IEnumerable<Adapter> AdapterList
         {
-            get
-            {
-                return _welcomeTitle;
-            }
-
+            get { return _adapterList; }
             set
             {
-                if (_welcomeTitle == value)
-                {
-                    return;
-                }
-
-                _welcomeTitle = value;
-                RaisePropertyChanged(WelcomeTitlePropertyName);
+                _adapterList = value;
+                RaisePropertyChanged(adapterListPropertyName);
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        public Adapter SelectedAdapter
+        {
+            get { return _selectedAdapter; }
+            set
+            {
+                if (_selectedAdapter == value)
+                    return;
+
+                _selectedAdapter = value;
+                RaisePropertyChanged(selectedAdapterPropertyName);
+            }
+        }
+
         public MainViewModel(IDataService dataService)
         {
             _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
+            Initialize();
+        }
 
-                    WelcomeTitle = item.Title;
-                });
+        public void Initialize()
+        {
+            _dataService.GetAdapterList(true).ContinueWith(t => { AdapterList = t.Result; });
+        }
+
+        public void SetDNS()
+        {
+            _dataService.SetDNS(_selectedAdapter.Id, _selectedAdapter.DNS, true);
         }
 
         ////public override void Cleanup()
