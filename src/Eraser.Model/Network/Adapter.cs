@@ -1,4 +1,4 @@
-﻿namespace Eraser.Core.Network
+﻿namespace Eraser.Model.Network
 {
     public class Adapter
     {

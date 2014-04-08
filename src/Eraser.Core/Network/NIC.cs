@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eraser.Model.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -11,9 +12,9 @@ namespace Eraser.Core.Network
         private static readonly string DNSSERVERSEARCHORDER = "DNSServerSearchOrder";
         private static readonly string SETDNSSERVERSEARCHORDER = "SetDNSServerSearchOrder";
 
-        public static IEnumerable<Adapter> GetAdapterList()
+        public static IEnumerable<Adapter> GetAdapterList(bool isIPEnabled)
         {
-            string query = "SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 1";
+            string query = string.Format("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = {0}", Convert.ToByte(isIPEnabled));
 
             ManagementObjectSearcher mos = new ManagementObjectSearcher(query);
             ManagementObjectCollection moc = mos.Get();
@@ -35,8 +36,10 @@ namespace Eraser.Core.Network
             yield break;
         }
 
-        public static void SetDNS(string settingId, string[] dnsArray, bool defined)
+        public static bool SetDNS(string settingId, string[] dnsArray, bool defined)
         {
+            bool isSet = false;
+
             string query = string.Format("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE SettingID = {0}", settingId);
 
             ManagementObjectSearcher mos = new ManagementObjectSearcher(query);
@@ -70,11 +73,17 @@ namespace Eraser.Core.Network
                     newMo[DNSSERVERSEARCHORDER] = dnsArray;
                 else
                     newMo[DNSSERVERSEARCHORDER] = null;
+
+                ManagementBaseObject updatedMo = null;
                 
-                mo.InvokeMethod(SETDNSSERVERSEARCHORDER, newMo, null);
+                updatedMo = mo.InvokeMethod(SETDNSSERVERSEARCHORDER, newMo, null);
+
+                isSet = updatedMo != null;
 
                 break;
             }
+
+            return isSet;
         }
     }
 }

@@ -20,6 +20,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eraser", "app\Eraser\Eraser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eraser.Domain", "src\Eraser.Domain\Eraser.Domain.csproj", "{98FBCADE-0D4A-403E-B601-83A5BAA16A31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eraser.Model", "src\Eraser.Model\Eraser.Model.csproj", "{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{85638BE4-9445-41B1-BF65-DA64AAFF90A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eraser.ConsoleSample", "sample\Eraser.ConsoleSample\Eraser.ConsoleSample.csproj", "{E051A759-EE52-47B8-8B38-9E0877B35334}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +44,14 @@ Global
 		{98FBCADE-0D4A-403E-B601-83A5BAA16A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98FBCADE-0D4A-403E-B601-83A5BAA16A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98FBCADE-0D4A-403E-B601-83A5BAA16A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E051A759-EE52-47B8-8B38-9E0877B35334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E051A759-EE52-47B8-8B38-9E0877B35334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E051A759-EE52-47B8-8B38-9E0877B35334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E051A759-EE52-47B8-8B38-9E0877B35334}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +59,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FBB9D4F1-D36E-4383-84E9-C5371CC160F3} = {644BBB7F-3356-4F92-899C-DF5247E15EC1}
 		{98FBCADE-0D4A-403E-B601-83A5BAA16A31} = {644BBB7F-3356-4F92-899C-DF5247E15EC1}
+		{7C653CB5-9DC6-4FE5-8552-FCD3ED1FC902} = {644BBB7F-3356-4F92-899C-DF5247E15EC1}
 		{AF8641AF-78C8-4B06-BEED-796AD8EC0347} = {DF100C6E-EADA-460C-9380-F6184D982BFF}
+		{E051A759-EE52-47B8-8B38-9E0877B35334} = {85638BE4-9445-41B1-BF65-DA64AAFF90A9}
 	EndGlobalSection
 EndGlobal

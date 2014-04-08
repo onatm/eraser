@@ -137,9 +137,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Eraser.Core\Eraser.Core.csproj">
-      <Project>{fbb9d4f1-d36e-4383-84e9-c5371cc160f3}</Project>
-      <Name>Eraser.Core</Name>
+    <ProjectReference Include="..\..\src\Eraser.Domain\Eraser.Domain.csproj">
+      <Project>{98fbcade-0d4a-403e-b601-83a5baa16a31}</Project>
+      <Name>Eraser.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Eraser.Model\Eraser.Model.csproj">
+      <Project>{7c653cb5-9dc6-4fe5-8552-fcd3ed1fc902}</Project>
+      <Name>Eraser.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -36,12 +36,16 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Network\Adapter.cs" />
     <Compile Include="Network\IPException.cs" />
     <Compile Include="Network\NIC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Eraser.Model\Eraser.Model.csproj">
+      <Project>{7c653cb5-9dc6-4fe5-8552-fcd3ed1fc902}</Project>
+      <Name>Eraser.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
