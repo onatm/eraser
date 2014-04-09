@@ -1,7 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using Eraser.Model;
-using Eraser.Domain.Service;
+﻿using Eraser.Domain.Service;
 using Eraser.Model.Network;
+using GalaSoft.MvvmLight;
 using System.Collections.Generic;
 
 namespace Eraser.ViewModel
@@ -15,6 +14,7 @@ namespace Eraser.ViewModel
 
         private IEnumerable<Adapter> _adapterList;
         private Adapter _selectedAdapter;
+        private IEnumerable<DNS> _dnsList;
 
         public IEnumerable<Adapter> AdapterList
         {
@@ -48,6 +48,15 @@ namespace Eraser.ViewModel
         public void Initialize()
         {
             _dataService.GetAdapterList(true).ContinueWith(t => { AdapterList = t.Result; });
+        }
+
+        public void CheckConnection()
+        {
+        }
+
+        public void GetDNSList()
+        {
+            _dataService.GetDNSList("http://onatm.github.io/eraser-dns-config/dns.json").ContinueWith(t => { _dnsList = t.Result; });
         }
 
         public void SetDNS()

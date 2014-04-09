@@ -20,32 +20,50 @@
 
     <Grid x:Name="LayoutRoot">
 
-        <ComboBox FontSize="12"
-                   FontWeight="Bold"
-                   Foreground="Purple"
-                   ItemsSource="{Binding AdapterList}"
-                   DisplayMemberPath="Name"
-                   VerticalAlignment="Center"
-                   SelectedIndex="0"
-                   SelectedItem="{Binding SelectedAdapter}"
-                   HorizontalAlignment="Center" Margin="10,10,10,224" Width="272" />
+        <Grid x:Name="mainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Content="Adapter:"/>  
+            <ComboBox x:Name="cmbAdapter"
+                      FontSize="12"
+                      FontWeight="Bold"
+                      Foreground="Purple"
+                      ItemsSource="{Binding AdapterList}"
+                      DisplayMemberPath="Name"
+                      VerticalAlignment="Center"
+                      SelectedIndex="0"
+                      SelectedItem="{Binding SelectedAdapter}"
+                      Grid.Row="0" Grid.Column="1"   />
+            
+            <Label Grid.Row="1" Grid.Column="0" Content="DNS 1" />
+            <TextBox FontSize="12"
+                     FontWeight="Bold"
+                     Foreground="Purple"
+                     Text="{Binding SelectedAdapter.DNS[0]}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     TextWrapping="Wrap"
+                     Grid.Row="1" Grid.Column="1"/>
 
-        <TextBox FontSize="12"
-                 FontWeight="Bold"
-                 Foreground="Purple"
-                 Text="{Binding SelectedAdapter.DNS[0]}"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Center"
-                 TextWrapping="Wrap" Margin="10,44,10,195" Width="272" />
-
-        <TextBox FontSize="12"
-                 FontWeight="Bold"
-                 Foreground="Purple"
-                 Text="{Binding SelectedAdapter.DNS[1]}"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Center"
-                 TextWrapping="Wrap" Margin="10,79,10,160" Width="272" />
-
+            <Label Grid.Row="2" Grid.Column="0" Content="DNS 2" />
+            <TextBox FontSize="12"
+                     FontWeight="Bold"
+                     Foreground="Purple"
+                     Text="{Binding SelectedAdapter.DNS[1]}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     TextWrapping="Wrap"
+                     Grid.Row="2" Grid.Column="1"/>
+        </Grid>
 
     </Grid>
 </Window>
