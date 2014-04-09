@@ -9,12 +9,17 @@ namespace Eraser.ViewModel
     {
         private readonly IDataService _dataService;
 
+        public const string remoteDNSProvider = "http://onatm.github.io/eraser-dns-config/dns.json";
+
         public const string adapterListPropertyName = "AdapterList";
+        public const string dnsListPropertyName = "DNSList";
         public const string selectedAdapterPropertyName = "SelectedAdapter";
+        public const string selectedDNSProviderPropertyName = "SelectedDNSProvider";
 
         private IEnumerable<Adapter> _adapterList;
-        private Adapter _selectedAdapter;
         private IEnumerable<DNS> _dnsList;
+        private Adapter _selectedAdapter;
+        private DNS _selectedDNSProvider;
 
         public IEnumerable<Adapter> AdapterList
         {
@@ -23,6 +28,16 @@ namespace Eraser.ViewModel
             {
                 _adapterList = value;
                 RaisePropertyChanged(adapterListPropertyName);
+            }
+        }
+
+        public IEnumerable<DNS> DNSList
+        {
+            get { return _dnsList; }
+            set
+            {
+                _dnsList = value;
+                RaisePropertyChanged(dnsListPropertyName);
             }
         }
 
@@ -36,6 +51,19 @@ namespace Eraser.ViewModel
 
                 _selectedAdapter = value;
                 RaisePropertyChanged(selectedAdapterPropertyName);
+            }
+        }
+
+        public DNS SelectedDNSProvider
+        {
+            get { return _selectedDNSProvider; }
+            set
+            {
+                if (_selectedDNSProvider == value)
+                    return;
+
+                _selectedDNSProvider = value;
+                RaisePropertyChanged(selectedDNSProviderPropertyName);
             }
         }
 
@@ -56,7 +84,7 @@ namespace Eraser.ViewModel
 
         public void GetDNSList()
         {
-            _dataService.GetDNSList("http://onatm.github.io/eraser-dns-config/dns.json").ContinueWith(t => { _dnsList = t.Result; });
+            _dataService.GetDNSList(remoteDNSProvider).ContinueWith(t => { DNSList = t.Result; });
         }
 
         public void SetDNS()
