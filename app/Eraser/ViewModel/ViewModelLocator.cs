@@ -31,6 +31,7 @@ namespace Eraser.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<IDataService, DataService>();
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<ModalViewModel>();
         }
 
         /// <summary>
@@ -44,6 +45,14 @@ namespace Eraser.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public ModalViewModel Modal
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ModalViewModel>();
             }
         }
 
