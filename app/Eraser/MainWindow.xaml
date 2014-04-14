@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
         mc:Ignorable="d ignore"
+        xmlns:p="clr-namespace:Eraser.Properties"
         Height="130"
         Width="300"
-        Title="Eraser"
+        Title="{x:Static p:Resources.titleMain}"
         DataContext="{Binding Main, Source={StaticResource Locator}}" ResizeMode="CanMinimize">
 
     <Window.Resources>
@@ -27,12 +28,12 @@
                     HorizontalAlignment="Right"
                     FontSize="32"
                     Background="GreenYellow"
-                    Content="Change DNS" Width="264" Margin="0,10,10,0" Click="btnChangeDNS_Click" />
+                    Content="{x:Static p:Resources.btnChangeDNS}" Width="264" Margin="0,10,10,0" Click="btnChangeDNS_Click" />
 
             <Button x:Name="btnAdvancedSettings"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Content="Advanced Settings" Width="130" Margin="0,10,10,0" Command="{Binding OpenModalDialog}" />
+                    Content="{x:Static p:Resources.btnAdvancedSettings}" Width="130" Margin="0,10,10,0" Command="{Binding OpenModalDialog}" />
 
         </StackPanel>
 

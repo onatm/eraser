@@ -118,36 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAdvancedSettings" xml:space="preserve">
-    <value>Advanced Settings</value>
+    <value>Gelişmiş Ayarlar</value>
   </data>
   <data name="btnApply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Uygula</value>
   </data>
   <data name="btnChangeDNS" xml:space="preserve">
-    <value>Change DNS</value>
+    <value>DNS Değiştir</value>
   </data>
   <data name="btnGetDNSList" xml:space="preserve">
-    <value>Get DNS List</value>
+    <value>DNS Listesini Getir</value>
   </data>
   <data name="lblAdapter" xml:space="preserve">
-    <value>Adapter</value>
+    <value>Ağ Bağdaştırıcsı</value>
   </data>
   <data name="lblAlternateDNS" xml:space="preserve">
-    <value>Alternate DNS</value>
+    <value>Diğer DNS</value>
   </data>
   <data name="lblConfigurationHost" xml:space="preserve">
-    <value>Configuration Host</value>
+    <value>Yapılandırma Sunucusu</value>
   </data>
   <data name="lblDNSServer" xml:space="preserve">
-    <value>DNS Server</value>
+    <value>DNS Sunucusu</value>
   </data>
   <data name="lblPreferredDNS" xml:space="preserve">
-    <value>Preferred DNS</value>
+    <value>Yeğlenen DNS</value>
   </data>
   <data name="titleAdvancedSettings" xml:space="preserve">
-    <value>Eraser - Advanced Settings</value>
+    <value>Silici - Gelişmiş Ayarlar</value>
   </data>
   <data name="titleMain" xml:space="preserve">
-    <value>Eraser</value>
+    <value>Silici</value>
   </data>
 </root>
